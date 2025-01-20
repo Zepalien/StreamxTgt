@@ -4,13 +4,15 @@
       padding: 0;
       box-sizing: border-box;
     }
-   body {
+   body { 
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, black, red);
-  background-color: black; /* Fallback for unsupported browsers */
+  background: linear-gradient(to right, #000000, #550000, #FF0000); /* Black to dark red to red */
   color: #fff;
   line-height: 1.6;
+  min-height: 100vh; /* Ensures the gradient spans the full height of the page */
+  margin: 0;
 }
+
 
 
     /* Navbar */
