@@ -1,4 +1,4 @@
-    /* Reset and Fonts */
+ /* Reset and Fonts */
     * {
       margin: 0;
       padding: 0;
@@ -7,8 +7,7 @@
     body {
       font-family: 'Poppins', sans-serif;
       background: url('stream.jpg') no-repeat center center fixed !important;
-      background-color: #121212;
-      color: #fff;
+      color: #333;
       line-height: 1.6;
     }
 
