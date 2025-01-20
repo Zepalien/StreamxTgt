@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - StreamxTgt</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/contact.css">
   <style>
-   /* Reset and Fonts */
+    /* Reset and Fonts */
     * {
       margin: 0;
       padding: 0;
@@ -15,8 +14,8 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: url('stream.jpg') no-repeat center center fixed !important;
-      color: #333;
+      background-color: #121212;
+      color: #fff;
       line-height: 1.6;
     }
 
@@ -138,25 +137,21 @@
       font-size: 14px;
       color: #bbb;
     }
-</style>
- </head>
+  </style>
+</head>
 <body>
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
-      <img src="images/logo.png" alt="StreamxTgt Logo"></div>
+      <img src="images/logo.png" alt="StreamxTgt"> StreamxTgt
+    </div>
     <div class="menu">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="feature.html">Features</a>
       <a href="contact.html">Contact</a>
     </div>
-    <div class="icons">
-      <span class="notifications">🔔</span>
-      <span class="account">👤 Account</span>
-    </div>
   </nav>
-
 
   <!-- Contact Section -->
   <section class="contact-section">
@@ -169,12 +164,12 @@
     </div>
 
     <h3>Contact Form</h3>
-    <form class="contact-form" onsubmit="sendEmail(event)">
-  <input type="text" id="name" placeholder="Your Name" required>
-  <input type="email" id="email" placeholder="Your Email" required>
-  <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
-  <button type="submit">Send Message</button>
-</form>
+    <form class="contact-form" action="submit_form.php" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <!-- Footer -->
@@ -187,20 +182,5 @@
     </div>
     <p>&copy; 2025 StreamxTgt. All Rights Reserved. byZep2025</p>
   </footer>
-<script>
-  function sendEmail(event) {
-    event.preventDefault(); // Prevent the form from refreshing the page
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    const subject = `Contact Form Submission from ${name}`;
-    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
-
-    // Open the user's email client
-    window.location.href = `mailto:StreamxTgt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }
-</script>
-
 </body>
 </html>
