@@ -1,131 +1,142 @@
- /* Reset and Fonts */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212;
-      color: #fff;
-      line-height: 1.6;
-    }
+/* Reset and Fonts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #121212; /* Dark background for contrast */
+  color: #f2f2f2; /* Light text for readability */
+  line-height: 1.8; /* Increased line height for better readability */
+  font-size: 16px; /* Default font size */
+  padding: 20px; /* Added padding to avoid text sticking to edges */
+}
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 15px;
-      background: linear-gradient(to right, black, red);
-      color: white;
-    }
-    .navbar .logo {
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-    }
-    .navbar .logo img {
-      width: 30px;
-      margin-right: 10px;
-    }
-    .navbar .menu a {
-      text-decoration: none;
-      color: white;
-      margin: 0 15px;
-      font-size: 14px;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    .navbar .menu a:hover {
-      color: #f8d7da;
-    }
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: linear-gradient(to right, black, red); /* Gradient effect */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.navbar .logo img {
+  width: 30px;
+  margin-right: 10px;
+}
+.navbar .menu a {
+  text-decoration: none;
+  color: white;
+  margin: 0 20px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.navbar .menu a:hover {
+  color: #f8d7da; /* Soft red hover effect */
+}
 
-    /* Contact Section */
-    .contact-section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .contact-section h2 {
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      background: linear-gradient(to right, black, red);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* Contact Section */
+.contact-section {
+  padding: 50px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+}
+.contact-section h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, black, red);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: fadeIn 1.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.contact-details {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+.contact-details p {
+  margin-bottom: 15px;
+  line-height: 1.8; /* Improve readability */
+}
 
-    .contact-details {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-    .contact-details p {
-      margin-bottom: 10px;
-    }
+/* Contact Form */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1); /* Transparent form background */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); /* Red shadow for focus */
+  backdrop-filter: blur(8px);
+  animation: popUp 1s ease;
+}
+@keyframes popUp {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  color: #333;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa; /* Subtle placeholder color */
+}
+.contact-form button {
+  background: linear-gradient(to right, black, red);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.contact-form button:hover {
+  background: linear-gradient(to left, black, red);
+  transform: scale(1.05);
+}
 
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
-      backdrop-filter: blur(8px);
-      animation: popUp 1s ease;
-    }
-    @keyframes popUp {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .contact-form input,
-    .contact-form textarea,
-    .contact-form button {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 16px;
-    }
-    .contact-form button {
-      background: linear-gradient(to right, black, red);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    .contact-form button:hover {
-      background: linear-gradient(to left, black, red);
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: #121212;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-    }
-    footer a {
-      color: #f8d7da;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    footer p {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #bbb;
-    }
+/* Footer */
+footer {
+  background: #121212;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+footer a {
+  color: #f8d7da;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #bbb;
+}
