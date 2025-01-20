@@ -5,153 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - StreamxTgt</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset and Fonts */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 15px;
-      background: linear-gradient(to right, black, red);
-      color: white;
-    }
-    .navbar .logo {
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-    }
-    .navbar .logo img {
-      width: 30px;
-      margin-right: 10px;
-    }
-    .navbar .menu a {
-      text-decoration: none;
-      color: white;
-      margin: 0 15px;
-      font-size: 14px;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    .navbar .menu a:hover {
-      color: #f8d7da;
-    }
-
-    /* Contact Section */
-    .contact-section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .contact-section h2 {
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      background: linear-gradient(to right, black, red);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .contact-details {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-    .contact-details p {
-      margin-bottom: 10px;
-    }
-
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
-      backdrop-filter: blur(8px);
-      animation: popUp 1s ease;
-    }
-    @keyframes popUp {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .contact-form input,
-    .contact-form textarea,
-    .contact-form button {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 16px;
-    }
-    .contact-form button {
-      background: linear-gradient(to right, black, red);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    .contact-form button:hover {
-      background: linear-gradient(to left, black, red);
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: #121212;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-    }
-    footer a {
-      color: #f8d7da;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    footer p {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #bbb;
-    }
-  </style>
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
-      <img src="images/logo.png" alt="StreamxTgt"> StreamxTgt
-    </div>
+      <img src="images/logo.png" alt="Play Show Logo"></div>
     <div class="menu">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="feature.html">Features</a>
       <a href="contact.html">Contact</a>
     </div>
+    <div class="icons">
+      <span class="notifications">🔔</span>
+      <span class="account">👤 Account</span>
+    </div>
   </nav>
+
 
   <!-- Contact Section -->
   <section class="contact-section">
@@ -164,12 +36,12 @@
     </div>
 
     <h3>Contact Form</h3>
-    <form class="contact-form" action="submit_form.php" method="post">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <form class="contact-form" onsubmit="sendEmail(event)">
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="email" id="email" placeholder="Your Email" required>
+  <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
   </section>
 
   <!-- Footer -->
@@ -182,5 +54,20 @@
     </div>
     <p>&copy; 2025 StreamxTgt. All Rights Reserved. byZep2025</p>
   </footer>
+<script>
+  function sendEmail(event) {
+    event.preventDefault(); // Prevent the form from refreshing the page
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const subject = `Contact Form Submission from ${name}`;
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+
+    // Open the user's email client
+    window.location.href = `mailto:StreamxTgt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+</script>
+
 </body>
 </html>
