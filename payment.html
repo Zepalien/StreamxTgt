@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="payment.css">
+  <title>Payment</title>
+ </head>
+<body>
+  <div class="payment-page">
+    <h2>Set up your payment</h2>
+    <div class="plan-summary">
+      <!-- The selected plan will be dynamically updated here -->
+      <p>Loading selected plan...</p>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="payment-method">
+      <p><strong>Payment Method Accepted:</strong></p>
+      <img src="touchngo.png" alt="Touch 'n Go">
+    </div>
+
+    <!-- Payment Form -->
+    <form onsubmit="event.preventDefault(); startMembership();">
+      <label for="mobile-number">Enter your mobile number:</label>
+      <input type="tel" id="mobile-number" name="mobile-number" placeholder="012-3456789" required>
+
+      <div style="display: flex; align-items: center;">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to the Terms and Conditions</label>
+      </div>
+
+      <button type="submit">Start Membership</button>
+    </form>
+  </div>
+   <script>
+    // Load selected plan details from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectedPlan = JSON.parse(localStorage.getItem('selectedPlan'));
+
+      if (selectedPlan) {
+        document.querySelector('.plan-summary').innerHTML = `
+          <p><strong>${selectedPlan.price}</strong>/month</p>
+          <p><strong>${selectedPlan.name}</strong></p>
+          <a href="subscription.html" class="change-plan">Change</a>
+        `;
+      }
+    });
+
+    // Update user status on "Start Membership" button click
+    function startMembership() {
+      const selectedPlan = JSON.parse(localStorage.getItem('selectedPlan'));
+      if (selectedPlan) {
+        // Update status in user.html
+        localStorage.setItem('userStatus', JSON.stringify({
+          plan: selectedPlan.name,
+          price: selectedPlan.price,
+          status: 'Active'
+        }));
+        window.location.href = 'user.html'; // Redirect to user.html
+      }
+    }
+  </script>
+
+</body>
+</html>

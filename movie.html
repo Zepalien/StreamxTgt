@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Movie Together</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: white;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 98%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .navbar .menu {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar .menu li {
+            position: relative;
+        }
+
+        .navbar .menu a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .navbar .menu a:hover {
+            color: #fdd835;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            top: 100%;
+            left: 0;
+            list-style: none;
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            color: black;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #fdd835;
+            color: white;
+        }
+
+
+        /* Back Button */
+        .back-btn {
+            margin-left: 20px;
+            padding: 10px;
+            background-color: #fdd835;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background-color: #fbc02d;
+        }
+	
+	.chat-box {
+            width: 35%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            position: fixed;
+            right: 20px;
+            top: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .chat-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .chat-box li {
+            padding: 5px 0;
+        }
+
+        #message {
+            width: 65%;
+            padding: 10px;
+        }
+
+        .chat-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        #send, #leaveRoom {
+            padding: 10px 20px;
+            background-color: #fdd835;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #send:hover, #leaveRoom:hover {
+            background-color: #fbc02d;
+        }
+
+        /* Centering and Styling the Forms */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .form-container input {
+            padding: 10px;
+            margin: 5px;
+            width: 250px;
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #fdd835;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-container button:hover {
+            background-color: #fbc02d;
+        }
+
+        /* Movie Library */
+.movielibrary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Centers the movie cards */ 
+    gap: 500px;
+    margin-top: 45px; /* Adjust this value to ensure spacing below the header */
+}
+
+.movie-card {
+    width: 200px;
+    background-color: #222;
+    border-radius: 10px;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center; /* Ensure text is centered */
+}
+
+.movie-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.movie-card .movie-title {
+    padding: 10px;
+    text-align: center; /* Centers the movie title text */
+    font-weight: bold;
+}
+
+        /* Video and Controls */
+        .video-container {
+            width: 60%;
+            margin-top: 20px;
+            float: left;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .controls button {
+            padding: 10px;
+            background-color: #fdd835;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: #fbc02d;
+        }
+
+        /* Chat Box */
+        .chat-box {
+            width: 35%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            position: fixed;
+            right: 20px;
+            top: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .chat-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .chat-box li {
+            padding: 5px 0;
+        }
+
+        #message {
+            width: 80%;
+            padding: 10px;
+        }
+
+        #send {
+            padding: 10px 20px;
+            background-color: #fdd835;
+            border: none;
+            cursor: pointer;
+        }
+
+        #send:hover {
+            background-color: #fbc02d;
+        }
+
+        /* User Profile Section */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .profile-container h3 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .profile-container input[type="text"] {
+            width: 250px;
+        }
+
+        .profile-container button {
+            margin-top: 10px;
+        }
+
+        /* Room Management */
+        .room-container {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .room-container button {
+            padding: 10px 20px;
+            background-color: #fdd835;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .room-container button:hover {
+            background-color: #fbc02d;
+        }
+
+        /* User List */
+        .user-list {
+            margin-top: 20px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .user-list h4 {
+            margin-bottom: 10px;
+        }
+
+        .user-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .user-list li {
+            padding: 5px 0;
+        }
+
+        /* Room Controls */
+        .room-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .room-controls button {
+            padding: 10px 20px;
+            background-color: #fdd835;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .room-controls button:hover {
+            background-color: #fbc02d;
+        }
+    </style>
+</head>
+<body>
+	<!-- Header Section -->
+    <header class="header">
+        <img src="logo.png" alt="Logo" class="logo">
+	<a href="#" class="back-btn" onclick="window.history.back()">Back</a>
+        <nav class="navbar">
+            <ul class="menu">
+                <li class="dropdown">
+                    <a href="#">Home</a>
+                    <ul class="dropdown-menu"></ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#features">Features</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="movie.html">Stream movie</a></li>
+                        <li><a href="chat.html">Live chat</a></li>
+			<li><a href="room.html">Create room</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#genres">Genres</a></li>
+                <li><a href="#">Subscription</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- User Authentication (Sign In) -->
+    <div id="authSection" class="form-container">
+        <h2>Sign In</h2>
+        <input type="text" id="username" placeholder="Enter your username" />
+        <button onclick="signIn()">Sign In</button>
+    </div>
+
+    <!-- User Profile -->
+    <div id="profileSection" class="profile-container" style="display:none;">
+        <h3>Welcome, <span id="profileName"></span></h3>
+        <input type="text" id="updateUsername" placeholder="Update username" />
+        <button onclick="updateUsername()">Update Username</button>
+    </div>
+
+    <!-- Movie Library -->
+    <div id="movieLibrary" class="movie-library" style="display:center;">
+        <h2>Select a Movie</h2>
+        <div class="movie-card">
+            <img src="movie1.jpg" alt="Movie 1" />
+            <div class="movie-title">Movie 1</div>
+            <button onclick="selectMovie('movie1.mp4')">Watch</button>
+        </div>
+        <div class="movie-card">
+            <img src="movie2.jpg" alt="Movie 2" />
+            <div class="movie-title">Movie 2</div>
+            <button onclick="selectMovie('movie2.mp4')">Watch</button>
+        </div>
+    </div>
+
+    <!-- Room Management -->
+    <div id="roomSection" class="room-container" style="display:none;">
+        <button onclick="createRoom()">Create Room</button>
+        <button onclick="joinRoom()">Join Room</button>
+    </div>
+
+    <!-- Video Player and Controls -->
+    <div id="videoSection" class="video-container" style="display:none;">
+        <video id="moviePlayer" controls>
+            <source id="movieSource" src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="controls">
+            <button onclick="playPause()">Play/Pause</button>
+            <button onclick="skip(10)">Skip 10s</button>
+            <button onclick="skip(-10)">Rewind 10s</button>
+        </div>
+    </div>
+
+     <!-- Chat Section -->
+    <div id="chatSection" class="chat-box" style="display: none;">
+        <ul id="chatMessages">
+            <!-- Chat messages will appear here -->
+        </ul>
+        <div class="chat-controls">
+            <input type="text" id="message" placeholder="Type a message...">
+            <button id="send" onclick="sendMessage()">Send</button>
+            <button id="leaveRoom" onclick="leaveRoom()">Leave Room</button>
+        </div>
+    </div>
+
+
+    <!-- User List -->
+    <div id="userListSection" class="user-list" style="display:none;">
+        <h4>Current Room Members</h4>
+        <ul id="userList">
+            <!-- User names will be dynamically added here -->
+        </ul>
+    </div>
+
+    <!-- Room Controls -->
+    <div id="roomControls" class="room-controls" style="display:none;">
+        <button onclick="leaveRoom()">Leave Room</button>
+    </div>
+
+    <script>
+        const socket = new WebSocket("ws://localhost:8080");
+        let username = '';
+        let roomID = '';
+        let videoPlaying = false;
+
+        socket.onopen = () => {
+            console.log('Connected to WebSocket');
+        };
+
+        socket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            if (data.type === 'sync') {
+                const video = document.getElementById('moviePlayer');
+                video.currentTime = data.time;
+                if (data.playing) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            }
+            if (data.type === 'chat') {
+                displayMessage(data.message);
+            }
+            if (data.type === 'userList') {
+                updateUserList(data.users);
+            }
+        };
+
+        function signIn() {
+            username = document.getElementById('username').value;
+            if (username.trim()) {
+                document.getElementById('authSection').style.display = 'none';
+                document.getElementById('profileSection').style.display = 'block';
+                document.getElementById('profileName').textContent = username;
+                document.getElementById('movieLibrary').style.display = 'block';
+            }
+        }
+
+        function updateUsername() {
+            const newUsername = document.getElementById('updateUsername').value;
+            if (newUsername.trim()) {
+                username = newUsername;
+                document.getElementById('profileName').textContent = username;
+            }
+        }
+
+        function createRoom() {
+            roomID = prompt('Enter Room Name:');
+            socket.send(JSON.stringify({ type: 'create', roomID: roomID }));
+            document.getElementById('roomSection').style.display = 'none';
+            document.getElementById('movieLibrary').style.display = 'block';
+        }
+
+        function joinRoom() {
+            roomID = prompt('Enter Room ID to Join:');
+            socket.send(JSON.stringify({ type: 'join', roomID: roomID }));
+            document.getElementById('roomSection').style.display = 'none';
+            document.getElementById('movieLibrary').style.display = 'block';
+        }
+
+        function leaveRoom() {
+            socket.send(JSON.stringify({ type: 'leave', roomID: roomID }));
+            roomID = '';
+            document.getElementById('movieLibrary').style.display = 'none';
+            document.getElementById('chatSection').style.display = 'none';
+            document.getElementById('userListSection').style.display = 'none';
+            document.getElementById('roomControls').style.display = 'none';
+        }
+
+        function selectMovie(movie) {
+            const videoPlayer = document.getElementById('moviePlayer');
+            document.getElementById('movieSource').src = movie;
+            videoPlayer.load();
+            document.getElementById('movieLibrary').style.display = 'none';
+            document.getElementById('videoSection').style.display = 'block';
+            document.getElementById('chatSection').style.display = 'block';
+            document.getElementById('userListSection').style.display = 'block';
+            document.getElementById('roomControls').style.display = 'block';
+
+            socket.send(JSON.stringify({ type: 'join', roomID: roomID }));
+        }
+
+        function playPause() {
+            const video = document.getElementById('moviePlayer');
+            if (videoPlaying) {
+                video.pause();
+            } else {
+                video.play();
+            }
+            videoPlaying = !videoPlaying;
+            socket.send(JSON.stringify({ type: 'sync', playing: videoPlaying, time: video.currentTime }));
+        }
+
+        function skip(seconds) {
+            const video = document.getElementById('moviePlayer');
+            video.currentTime += seconds;
+            socket.send(JSON.stringify({ type: 'sync', playing: videoPlaying, time: video.currentTime }));
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('message').value;
+            if (message.trim()) {
+                const chatMessages = document.getElementById('chatMessages');
+                const li = document.createElement('li');
+                li.textContent = `You: ${message}`;
+                chatMessages.appendChild(li);
+                document.getElementById('message').value = '';
+            }
+        }
+
+        function leaveRoom() {
+            document.getElementById('movieLibrary').style.display = 'block';
+            document.getElementById('chatSection').style.display = 'none';
+        }
+
+
+        function updateUserList(users) {
+            const userList = document.getElementById('userList');
+            userList.innerHTML = '';
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.textContent = user;
+                userList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>

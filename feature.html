@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features Page</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Reset & Basic Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #00b5e2, #5b2c6f);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid #ff7f50;
+    }
+    .navbar .logo img {
+      width: 40px;
+      margin-right: 10px;
+    }
+    .navbar .menu a {
+      text-decoration: none;
+      color: #ff7f50;
+      margin: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .navbar .menu a:hover {
+      color: #fff;
+    }
+    .navbar .icons span {
+      margin: 0 15px;
+      cursor: pointer;
+      font-size: 22px;
+      transition: transform 0.3s ease;
+    }
+    .navbar .icons span:hover {
+      transform: scale(1.2);
+    }
+
+    /* Features Section */
+    .features-page {
+      padding: 120px 20px;
+      text-align: center;
+       background: linear-gradient(135deg, #00b5e2, #5b2c6f);
+      color: #fff;
+
+    }
+    .features-title {
+      font-size: 38px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+    .feature-card {
+      background-color: #f9f9f9; /* Light background color for the card */
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.3);
+    }
+    .feature-card img {
+      width: 60px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover img {
+      transform: scale(1.2);
+    }
+    .feature-card h3 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333; /* Dark color for better readability */
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 18px;
+      color: #555; /* Lighter color for the description */
+    }
+
+    /* Carousel Section */
+.carousel-section {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 60px 20px;
+  margin-top: 50px;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+.carousel-title {
+  font-size: 36px;
+  color: #ff7f50;
+  margin-bottom: 30px;
+}
+.carousel {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 300px;
+}
+.carousel-item {
+  flex: 1 0 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+}
+.carousel-item.active {
+  display: flex;
+  opacity: 1;
+}
+.carousel-image {
+  max-width: 40%;
+  border-radius: 12px;
+  margin-right: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.carousel-content {
+  color: #fff;
+  text-align: left;
+}
+.carousel-content h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #ff7f50;
+}
+.carousel-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.carousel-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff7f50;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.carousel-btn:hover {
+  background-color: #e84a2f;
+}
+.carousel-controls {
+  margin-top: 20px;
+}
+.carousel-controls span {
+  cursor: pointer;
+  font-size: 24px;
+  margin: 0 10px;
+  color: #ff7f50;
+  transition: transform 0.3s ease;
+}
+.carousel-controls span:hover {
+  transform: scale(1.2);
+}
+
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 70px;
+    }
+    footer a {
+      color: #ff7f50;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+    footer p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Play Show Logo"> StreamxTgt
+    </div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="feature.html">Features</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="icons">
+      <span class="notifications">🔔</span>
+      <span class="account">👤 Account</span>
+    </div>
+  </nav>
+  <!-- Carousel Section -->
+<section class="carousel-section">
+  <h2 class="carousel-title">What's New</h2>
+  <div class="carousel">
+    <div class="carousel-item active">
+      <img src="3.png" alt="Newest Room" class="carousel-image">
+      <div class="carousel-content">
+        <h3>Newest Room</h3>
+        <p>Join our newest movie room, where fans gather to enjoy thrilling blockbusters together!</p>
+        <a href="room.html" class="carousel-btn">Join Now</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="1.png" alt="Highest Streamed Movie" class="carousel-image">
+      <div class="carousel-content">
+        <h3>Most Streamed Movie</h3>
+        <p>Don't miss out on the trending blockbuster everyone is talking about. Stream it now!</p>
+        <a href="library.html" class="carousel-btn">Watch Now</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="2." alt="Private Chat" class="carousel-image">
+      <div class="carousel-content">
+        <h3>Private Chat</h3>
+        <p>Enjoy one-on-one conversations with friends using our new private chat feature!</p>
+        <a href="chat.html" class="carousel-btn">Start Chatting</a>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-controls">
+    <span class="prev">&#10094;</span>
+    <span class="next">&#10095;</span>
+  </div>
+  <!-- Features Section -->
+  <div class="features-page">
+    <h2 class="features-title">Our Features</h2>
+    <div class="features-grid">
+      <a href="chat.html" class="feature-card">
+        <img src="images/live-chat-icon.png" alt="Live Chat">
+        <h3>Live Chat</h3>
+        <p>Connect with friends or other users in real-time, share thoughts, and discuss your favorite shows!</p>
+      </a>
+      <a href="mlibrary.html" class="feature-card">
+        <img src="images/online-streaming.png" alt="Stream Movie">
+        <h3>Stream Movie</h3>
+        <p>Watch your favorite movies and shows with a smooth, high-quality streaming experience.</p>
+      </a>
+      <a href="room.html" class="feature-card">
+        <img src="images/chat-room.png" alt="Make Room">
+        <h3>Make Room</h3>
+        <p>Create your own shared room and invite others to watch movies together, chat, and enjoy!</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <a href="index.html">Home</a> | 
+      <a href="about.html">About</a> | 
+      <a href="feature.html">Features</a> | 
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>&copy; 2025 Play Show. All Rights Reserved. byZep2025</p>
+  </footer>
+
+  <script>
+  const carouselItems = document.querySelectorAll(".carousel-item");
+  const prev = document.querySelector(".prev");
+  const next = document.querySelector(".next");
+  let currentIndex = 0;
+
+  function showCarouselItem(index) {
+    carouselItems.forEach((item, i) => {
+      item.classList.toggle("active", i === index);
+    });
+  }
+
+  prev.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+    showCarouselItem(currentIndex);
+  });
+
+  next.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % carouselItems.length;
+    showCarouselItem(currentIndex);
+  });
+
+  // Auto-rotate carousel every 5 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % carouselItems.length;
+    showCarouselItem(currentIndex);
+  }, 5000);
+
+  // Initialize the carousel
+  showCarouselItem(currentIndex);
+</script>
+</body>
+</html>

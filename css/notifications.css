@@ -1,0 +1,201 @@
+<style>
+     /* Reset and Fonts */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, red, black);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #1a1a1a;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      transition: background-color 0.3s ease-in-out;
+    }
+    .navbar:hover {
+      background-color: #111;
+    }
+    .navbar .logo {
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    .navbar .logo img {
+      width: 35px;
+      margin-right: 10px;
+    }
+    .navbar .menu a {
+      text-decoration: none;
+      color: white;
+      margin: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .navbar .menu a:hover {
+      color: #ff4d4d;
+    }
+    .navbar .icons {
+      display: flex;
+      align-items: center;
+    }
+    .navbar .icons span {
+      margin: 0 15px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+    .navbar .icons span:hover {
+      transform: scale(1.2);
+    }
+    /* Remove underline from the link */
+a {
+  text-decoration: none;
+}
+
+.account {
+  font-size: 20px;
+  color: #ff7f50; /* Adjust color to match your theme */
+  transition: color 0.3s ease;
+}
+
+.account:hover {
+  color: #fff; /* Change color when hovered for better visual effect */
+}
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+    header h1 {
+      font-size: 48px;
+      font-weight: bold;
+      background: linear-gradient(to right, red, black);
+      -webkit-background-clip: text;
+      color: white;
+    }
+
+    /* Filter Buttons */
+    .filter-buttons {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .filter-buttons button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: red;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .filter-buttons button:hover {
+      background: red;
+      color: white;
+    }
+
+    /* Notifications */
+    .notifications {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .notification-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      text-align: left;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .notification-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .notification-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .notification-card p {
+      font-size: 16px;
+      color: #ccc;
+    }
+    .notification-card .timestamp {
+      font-size: 14px;
+      color: #bbb;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #121212;
+      color: white;
+    }
+    footer a {
+      color: #f8d7da;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .feedback-list {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .feedback-item {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+    .feedback-item:last-child {
+      border-bottom: none;
+    }
+    .feedback-item h4 {
+      margin-bottom: 5px;
+      color: #ff4d4d;
+    }
+    .feedback-item p {
+      margin: 0;
+      color: #555;
+    }
+    .feedback-item small {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>

@@ -1,0 +1,41 @@
+.subscription-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.plans {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.plan {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.plan h3 {
+  font-size: 24px;
+  color: #333;
+}
+
+.plan p {
+  font-size: 18px;
+  color: #666;
+}
+
+.select-plan {
+  background-color: #ff7f50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.select-plan:hover {
+  background-color: #ff5733;
+}

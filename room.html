@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamxTgt - Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <aside id="sidebar">
+            <header>
+                <h2>Rooms</h2>
+                <button id="createRoomBtn">Create Room</button>
+            </header>
+            <div id="roomList">
+                <div class="room public" data-room="Public Room 1">Public Room 1</div>
+                <div class="room private" data-room="Private Room A">Private Room A</div>
+                <div class="room public" data-room="Movie Watch Party">Movie Watch Party</div>
+                <div class="room private" data-room="Private Drama Chat">Private Drama Chat</div>
+            </div>
+        </aside>
+
+        <main id="mainContent">
+            <div id="roomDetails">
+                <header>
+                    <h3 id="currentRoomName">Room: [Select a Room]</h3>
+                    <div class="roomOptions">
+                        <button id="changeThemeBtn">Change Theme</button>
+                        <button id="inviteBtn">Invite</button>
+                    </div>
+                </header>
+
+                <div id="chatArea">
+                    <div id="messages"></div>
+                    <form id="messageForm">
+                        <input type="text" id="messageInput" placeholder="Type a message...">
+                        <button type="submit">Send</button>
+                        <label>
+                            <input type="file" id="fileUpload" accept="image/*,.gif,.jpg,.png">
+                            <span>📎</span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+
+            <div id="userList">
+                <h4>Users in Room</h4>
+                <ul id="users"></ul>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Create Room -->
+    <div id="createRoomModal" class="modal">
+        <div class="modalContent">
+            <span class="closeBtn">&times;</span>
+            <h2>Create Room</h2>
+            <form id="createRoomForm">
+                <label for="roomName">Room Name</label>
+                <input type="text" id="roomName" required>
+
+                <label for="roomType">Room Type</label>
+                <select id="roomType">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+
+                <label for="maxUsers">Max Users</label>
+                <input type="number" id="maxUsers" min="1" max="50" required>
+
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            height: 100vh;
+            background: #2c2f33;
+            color: white;
+        }
+
+        #app {
+            display: flex;
+            width: 100%;
+        }
+
+        #sidebar {
+            background: #23272a;
+            width: 20%;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sidebar h2 {
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+
+        #createRoomBtn {
+            padding: 0.5rem;
+            background: #7289da;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        #roomList .room {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            background: #99aab5;
+            border-radius: 5px;
+        }
+
+        #mainContent {
+            flex: 1;
+            display: flex;
+        }
+
+        #roomDetails {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        #roomDetails header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        #chatArea {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #36393f;
+            border-radius: 5px;
+            padding: 1rem;
+        }
+
+        #messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        #messageForm {
+            display: flex;
+            align-items: center;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #fileUpload {
+            display: none;
+        }
+
+        #userList {
+            width: 20%;
+            background: #2c2f33;
+            padding: 1rem;
+        }
+
+        #userList h4 {
+            margin: 0 0 1rem;
+        }
+
+        #userList .user {
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+
+        .online {
+            background: #43b581;
+        }
+
+        .offline {
+            background: #f04747;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .modalContent {
+            background: #2c2f33;
+            padding: 2rem;
+            border-radius: 5px;
+            width: 400px;
+        }
+
+        .closeBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        const rooms = {
+            'Public Room 1': { messages: ["Welcome to Public Room 1!", "This is a fun place."], users: ["User1", "User2"] },
+            'Private Room A': { messages: ["Welcome to Private Room A!"], users: ["User3"] },
+            'Movie Watch Party': { messages: ["Get ready to watch movies together!"], users: ["User1", "User4"] },
+            'Private Drama Chat': { messages: ["Drama lovers unite!"], users: ["User5"] }
+        };
+
+        document.getElementById('roomList').addEventListener('click', function (e) {
+            if (e.target.classList.contains('room')) {
+                const roomName = e.target.dataset.room;
+                loadRoom(roomName);
+            }
+        });
+
+        document.getElementById('createRoomForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const roomName = document.getElementById('roomName').value;
+            const roomType = document.getElementById('roomType').value;
+            const maxUsers = document.getElementById('maxUsers').value;
+
+            rooms[roomName] = { messages: ["Welcome to " + roomName + "!"], users: [] };
+
+            const roomList = document.getElementById('roomList');
+            const newRoom = document.createElement('div');
+            newRoom.classList.add('room', roomType);
+            newRoom.dataset.room = roomName;
+            newRoom.textContent = roomName;
+            roomList.appendChild(newRoom);
+
+            document.getElementById('createRoomModal').style.display = 'none';
+            loadRoom(roomName);
+        });
+
+        document.getElementById('messageForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const messageInput = document.getElementById('messageInput');
+            const currentRoom = document.getElementById('currentRoomName').textContent.replace('Room: ', '');
+
+            if (messageInput.value.trim() !== '') {
+                rooms[currentRoom].messages.push(`You: ${messageInput.value}`);
+                loadRoom(currentRoom);
+                messageInput.value = '';
+            }
+        });
+
+        document.getElementById('createRoomBtn').addEventListener('click', function () {
+            document.getElementById('createRoomModal').style.display = 'flex';
+        });
+
+        document.querySelector('.closeBtn').addEventListener('click', function () {
+            document.getElementById('createRoomModal').style.display = 'none';
+        });
+
+        function loadRoom(roomName) {
+            const room = rooms[roomName];
+
+            document.getElementById('currentRoomName').textContent = `Room: ${roomName}`;
+
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML = '';
+            room.messages.forEach(message => {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.innerHTML = `<strong>${message.split(':')[0]}:</strong> ${message.split(':')[1] || message}`;
+                messagesDiv.appendChild(messageDiv);
+            });
+
+            const userList = document.getElementById('users');
+            userList.innerHTML = '';
+            room.users.forEach(user => {
+                const userLi = document.createElement('li');
+                userLi.classList.add('user', 'online'); // Assume all users in the room are online for now
+                userLi.textContent = user;
+                userList.appendChild(userLi);
+            });
+        }
+    </script>
+</body>
+</html>

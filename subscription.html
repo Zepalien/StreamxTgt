@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="subscription.css">
+  <title>Subscription Plans</title>
+ </head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      Play Show
+    </div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="feature.html">Features</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Subscription Section -->
+  <div class="subscription-page">
+    <h2>Choose the Plan That's Right for You</h2>
+    <div class="plans">
+      <!-- Mobile Plan -->
+      <div class="plan">
+        <h3>Mobile</h3>
+        <p><strong>RM 18.90</strong>/month</p>
+        <ul>
+          <li>Video and sound quality: Fair</li>
+          <li>Resolution: 480p</li>
+        </ul>
+        <button onclick="selectPlan('Mobile', 'RM 18.90')">Select Plan</button>
+      </div>
+
+      <!-- Basic Plan -->
+      <div class="plan">
+        <h3>Basic</h3>
+        <p><strong>RM 29.90</strong>/month</p>
+        <ul>
+          <li>Video and sound quality: Good</li>
+          <li>Resolution: 720p (HD)</li>
+        </ul>
+        <button onclick="selectPlan('Basic', 'RM 29.90')">Select Plan</button>
+      </div>
+
+      <!-- Standard Plan -->
+      <div class="plan">
+        <h3>Standard</h3>
+        <p><strong>RM 49.90</strong>/month</p>
+        <ul>
+          <li>Video and sound quality: Great</li>
+          <li>Resolution: 1080p (Full HD)</li>
+        </ul>
+        <button onclick="selectPlan('Standard', 'RM 49.90')">Select Plan</button>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="plan">
+        <h3>Premium</h3>
+        <p><strong>RM 62.90</strong>/month</p>
+        <ul>
+          <li>Video and sound quality: Best</li>
+          <li>Resolution: 4K (Ultra HD) + HDR</li>
+        </ul>
+        <button onclick="selectPlan('Premium', 'RM 62.90')">Select Plan</button>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Play Show. All Rights Reserved.</p>
+  </footer>
+   <script>
+    // Save selected plan details to localStorage
+    function selectPlan(planName, planPrice) {
+      localStorage.setItem('selectedPlan', JSON.stringify({ name: planName, price: planPrice }));
+      window.location.href = 'payment.html'; // Redirect to payment.html
+    }
+  </script>
+</body>
+</html>

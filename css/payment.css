@@ -1,0 +1,136 @@
+ <style>
+    /* Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Payment Page Container */
+    .payment-page {
+      background: #fff;
+      color: #333;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    .payment-page h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #2575fc;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .plan-summary {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease;
+    }
+
+    .plan-summary p {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .plan-summary a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .plan-summary a:hover {
+      background: #fff;
+      color: #2575fc;
+    }
+
+    .payment-method {
+      margin: 20px 0;
+    }
+
+    .payment-method img {
+      width: 150px;
+      margin-top: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form label {
+      font-size: 14px;
+      text-align: left;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    form input[type="tel"] {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    form input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    form button {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    form button:hover {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      transform: translateY(-3px);
+    }
+
+    /* Keyframes for Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
