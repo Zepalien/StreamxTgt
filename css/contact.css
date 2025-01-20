@@ -4,12 +4,14 @@
       padding: 0;
       box-sizing: border-box;
     }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, black, red);
-      color: #fff;
-      line-height: 1.6;
-    }
+   body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, black, red);
+  background-color: black; /* Fallback for unsupported browsers */
+  color: #fff;
+  line-height: 1.6;
+}
+
 
     /* Navbar */
     .navbar {
