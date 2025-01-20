@@ -108,6 +108,7 @@
     .what-is p,
     .about-us p {
       font-size: 18px;
+      color: #333;
     }
 /* Vision, Mission, and Objectives Section */
 .vision-mission-objectives {
