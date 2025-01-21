@@ -5,6 +5,187 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StreamxTgt</title>
   <link rel="stylesheet" href="css/stream.css">
+  <style>
+    
+    /* General Styles */
+    body {
+      font-family: 'DM Serif Text', serif;
+      margin: 0;
+      padding: 0;
+      background: url('images/stream.jpg') no-repeat center center fixed !important;
+      background-size: cover;
+      color: white;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar .logo {
+      font-size: 1.5em;
+      color: #fff;
+    }
+
+    .navbar .menu a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s;
+    }
+
+    .navbar .menu a:hover {
+      color: #00bcd4;
+    }
+
+    .navbar .icons span {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    /* Stream and Chat Section */
+    .stream-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 100px 20px 20px;
+      gap: 20px;
+    }
+
+    .stream-container iframe {
+      width: 60%;
+      height: 400px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .chat-box {
+      width: 35%;
+      max-width: 400px;
+      background-color: #1e1e1e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      height: 400px;
+    }
+
+    .chat-box ul {
+      flex: 1;
+      list-style-type: none;
+      margin: 0;
+      padding: 10px;
+      overflow-y: auto;
+      border-bottom: 1px solid #444;
+      background-color: #121212;
+      color: #ccc;
+    }
+
+    .chat-box ul li {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      background-color: #2e2e2e;
+      border-radius: 5px;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      gap: 10px;
+      background-color: #121212;
+    }
+
+    .chat-input input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+    .chat-input .button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #00bcd4;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .chat-input .button:hover {
+      background-color: #0097a7;
+      transform: scale(1.1);
+    }
+
+    /* Play Button */
+    .play-button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .play-button-container .button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .play-button-container .button:hover {
+      background-color: #218838;
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+  </style>
 </head>
 <body>
   <!-- Navbar -->
