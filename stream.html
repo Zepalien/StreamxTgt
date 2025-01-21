@@ -17,7 +17,41 @@
       scroll-behavior: smooth;
       margin-top: 70px; /* Added margin to prevent overlap with fixed navbar */
     }
-    
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar .logo {
+      font-size: 1.5em;
+      color: #fff;
+    }
+
+    .navbar .menu a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s;
+    }
+
+    .navbar .menu a:hover {
+      color: #00bcd4;
+    }
+
+    .navbar .icons span {
+      margin: 0 10px;
+      cursor: pointer;
+    }
     /* Stream and Chat Section */
     .stream-container {
       display: flex;
