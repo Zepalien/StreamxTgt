@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/user.css">
+  <link rel="stylesheet" href="user.css">
   <title>User Account</title>
 </head>
 <body>
@@ -27,7 +27,7 @@
       <!-- User Profile -->
       <h2>User Profile</h2>
       <div class="profile-details">
-        <img src="images/default-avatar.jpg" alt="User Avatar" class="user-avatar" id="userAvatar">
+        <img src="team1.jpg" alt="User Avatar" class="user-avatar">
         <h3>John Doe</h3>
         <p>Email: john.doe@example.com</p>
         <p>Username: johndoe123</p>
@@ -42,13 +42,10 @@
         <input type="email" id="edit-email" placeholder="Enter new email" required>
         <label for="edit-password">Password:</label>
         <input type="password" id="edit-password" placeholder="Enter new password" required>
-        <label for="edit-avatar">Profile Picture:</label>
-        <input type="file" id="edit-avatar" accept="image/*">
         <button class="save-profile">Save</button>
         <button type="button" onclick="location.reload()">Cancel</button>
       </form>
-    </div>
-  </div>
+
       <!-- User Status -->
       <h3>Status: <span class="status normal">Normal</span></h3>
       <div class="plan-details">
@@ -74,7 +71,6 @@
       const editButton = document.querySelector('.edit-profile');
       const editForm = document.querySelector('.edit-profile-form');
       const profileDetails = document.querySelector('.profile-details');
-      const avatar = document.getElementById('userAvatar');
 
       // Show form when "Edit Profile" button is clicked
       editButton.addEventListener('click', () => {
@@ -90,43 +86,12 @@
         const username = document.querySelector('#edit-username').value;
         const email = document.querySelector('#edit-email').value;
         const password = document.querySelector('#edit-password').value;
-        const fileInput = document.querySelector('#edit-avatar');
 
         // Update the profile display
-        if (username) {
-          document.getElementById('displayUsername').textContent = username;
-          document.getElementById('displayUser').textContent = username;
-        }
-        if (email) {
-          document.getElementById('displayEmail').textContent = `Email: ${email}`;
-        }
+        profileDetails.querySelector('h3').textContent = username;
+        profileDetails.querySelector('p:nth-of-type(1)').textContent = `Email: ${email}`;
+        profileDetails.querySelector('p:nth-of-type(2)').textContent = `Username: ${username}`;
 
-        // Handle profile picture update
-        if (fileInput.files.length > 0) {
-          const reader = new FileReader();
-          reader.onload = function(event) {
-            avatar.src = event.target.result;
-            localStorage.setItem('userAvatar', event.target.result);
-          };
-          reader.readAsDataURL(fileInput.files[0]);
-        }
-
-        // Save data in localStorage
-        const userData = { username, email, password };
-        localStorage.setItem('userData', JSON.stringify(userData));
-        alert('Profile updated successfully!');
-
-        // Hide the form and show profile details
-        editForm.style.display = 'none';
-        profileDetails.style.display = 'block';
-      });
-
-      // Load saved data from localStorage
-      const savedAvatar = localStorage.getItem('userAvatar');
-      if (savedAvatar) {
-        avatar.src = savedAvatar;
-      }
-    });
         // Hide the form and show profile details
         editForm.style.display = 'none';
         profileDetails.style.display = 'block';
