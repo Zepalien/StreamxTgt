@@ -79,13 +79,13 @@ a {
 }
 
     
-         /* Hero Section */
+       /* Hero Section */
     .hero {
       position: relative;
       height: 80vh;
       overflow: hidden;
-      background: linear-gradient(45deg, #6a11cb, #2575fc);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(45deg, #4A00E0, #8E2DE2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
     .hero-slides {
       display: flex;
@@ -104,47 +104,48 @@ a {
       background-repeat: no-repeat;
       color: white;
       transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(5px); /* Adds a subtle background blur */
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px); /* Enhanced blur for better readability */
     }
     .hero-slide:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
     .hero-slide h1 {
-      font-size: 4rem;
+      font-size: 4.5rem;
       font-weight: bold;
-      text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
+      text-shadow: 6px 6px 15px rgba(0, 0, 0, 0.9);
       letter-spacing: 2px;
       margin-bottom: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 25px;
+      border-radius: 12px;
     }
     .hero-slide p {
-      font-size: 22px;
+      font-size: 24px;
       margin-bottom: 30px;
-      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
-      background: rgba(0, 0, 0, 0.5);
-      padding: 8px 15px;
-      border-radius: 8px;
+      text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 18px;
+      border-radius: 10px;
     }
     .hero-slide .btn {
-      padding: 14px 30px;
+      padding: 16px 35px;
       background-color: white;
-      color: #333;
-      font-size: 18px;
+      color: #222;
+      font-size: 20px;
       font-weight: bold;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 10px;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
     }
     .hero-slide .btn:hover {
-      background-color: #2575fc;
+      background-color: #8E2DE2;
       color: white;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
+
 
     
     @keyframes slide {
