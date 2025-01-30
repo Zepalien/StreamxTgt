@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/user.css">
+  <link rel="stylesheet" href="user.css">
   <title>User Account</title>
 </head>
 <body>
@@ -11,7 +11,7 @@
  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
-      <img src="images/logo.png" alt="Play Show Logo"> Play Show
+      <img src="logo.png" alt="Play Show Logo"> Play Show
     </div>
     <div class="menu">
       <a href="index.html">Home</a>
@@ -27,16 +27,15 @@
       <!-- User Profile -->
       <h2>User Profile</h2>
       <div class="profile-details">
-         <img src="images/default-avatar.jpg" alt="User Avatar" class="user-avatar" id="userAvatar">
-       <h3 id="displayUsername">John Doe</h3>
-        <p id="displayEmail">Email: john.doe@example.com</p>
-        <p>Username: <span id="displayUser">johndoe123</span></p>
+        <img src="images/default-avatar.jpg" alt="User Avatar" class="user-avatar" id="userAvatar">
+        <h3>John Doe</h3>
+        <p>Email: john.doe@example.com</p>
+        <p>Username: johndoe123</p>
         <button class="edit-profile">Edit Profile</button>
       </div>
 
-
-       <!-- Edit Profile Form -->
-      <form class="edit-profile-form" style="display: none;">
+      <!-- Edit Profile Form -->
+      <form class="edit-profile-form">
         <label for="edit-username">Username:</label>
         <input type="text" id="edit-username" placeholder="Enter new username" required>
         <label for="edit-email">Email:</label>
@@ -50,7 +49,6 @@
       </form>
     </div>
   </div>
-
       <!-- User Status -->
       <h3>Status: <span class="status normal">Normal</span></h3>
       <div class="plan-details">
@@ -71,7 +69,7 @@
   <footer>
     <p>&copy; 2025 Play Show. All Rights Reserved.</p>
   </footer>
-   <script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const editButton = document.querySelector('.edit-profile');
       const editForm = document.querySelector('.edit-profile-form');
@@ -127,6 +125,37 @@
       const savedAvatar = localStorage.getItem('userAvatar');
       if (savedAvatar) {
         avatar.src = savedAvatar;
+      }
+    });
+        // Hide the form and show profile details
+        editForm.style.display = 'none';
+        profileDetails.style.display = 'block';
+
+        // Optionally save the updated info to localStorage or server
+        const userData = { username, email, password };
+        localStorage.setItem('userData', JSON.stringify(userData));
+        alert('Profile updated successfully!');
+      });
+    });
+    // Load user status and plan from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const userStatus = JSON.parse(localStorage.getItem('userStatus'));
+
+      // Check if user status is available
+      if (userStatus) {
+        // Update the user's status and plan dynamically
+        document.querySelector('.status').textContent = userStatus.plan; // User's plan status
+        document.querySelector('.status').classList.remove('normal', 'active');
+        if (userStatus.plan === 'Active') {
+          document.querySelector('.status').classList.add('active');
+        } else {
+          document.querySelector('.status').classList.add('normal');
+        }
+
+        document.querySelector('.plan-details').innerHTML = `
+          <p>Plan: ${userStatus.plan}</p>
+          <p>Price: ${userStatus.price}/month</p>
+         `;
       }
     });
 
