@@ -79,7 +79,7 @@ a {
 }
 
     
-       /* Hero Section */
+          /* Hero Section */
     .hero {
       position: relative;
       height: 80vh;
@@ -105,49 +105,39 @@ a {
       color: white;
       transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(8px); /* Enhanced blur for better readability */
     }
     .hero-slide:hover {
       transform: scale(1.05);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
     .hero-slide h1 {
-      font-size: 4.5rem;
+      font-size: 3rem;
       font-weight: bold;
-      text-shadow: 6px 6px 15px rgba(0, 0, 0, 0.9);
+      text-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
       letter-spacing: 2px;
       margin-bottom: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 15px 25px;
-      border-radius: 12px;
     }
     .hero-slide p {
-      font-size: 24px;
+      font-size: 1.5rem;
       margin-bottom: 30px;
-      text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px 18px;
-      border-radius: 10px;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
     }
     .hero-slide .btn {
-      padding: 16px 35px;
+      padding: 14px 30px;
       background-color: white;
       color: #222;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       text-decoration: none;
-      border-radius: 10px;
+      border-radius: 8px;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
     .hero-slide .btn:hover {
       background-color: #8E2DE2;
       color: white;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    }
-
-
-    
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }    
     @keyframes slide {
       0%, 33% { transform: translateX(0); }
       33.33%, 66.66% { transform: translateX(-100%); }
